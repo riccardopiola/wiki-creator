@@ -1,0 +1,7 @@
+{
+  "modulePath": "API",
+  "wikiPath": "wiki",
+  "customWikiPagesPath": "customWikiPages",
+  "wikiURL": "https://github.com/riccardopiola/student-app/wiki",
+  "writeIndexIfNComponents": "3"
+}
