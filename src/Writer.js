@@ -4,13 +4,13 @@ const readline = require('readline');
 const path = require('path');
 
 const cwd = process.cwd();
-const settings = require(`${cwd}/wiki-creator.config.json`);
+const settings = require(`${cwd}/react-wikipage-creator.config.json`);
 const { wikiURL, wikiPath, useCustomWikiPages, customWikiPagesPath } = settings;
 
 function write(componentsArray, fileName) {
   return new Promise((resolve, reject) => {
     let writeIndex = false;
-    let customPath = `${customWikiPagesPath}/Standard.md`;
+    let customPath = path.join(__dirname ,'standardMD/Standard.md');
     if (fse.pathExistsSync(`${customWikiPagesPath}/${fileName}.md`))
       customPath = `${customWikiPagesPath}/${fileName}.md`;
     // Decide whether to write the index

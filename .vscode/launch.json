@@ -14,7 +14,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch",
-      "program": "${workspaceFolder}/index.js"
+      "program": "${workspaceFolder}/cli.js"
     }
   ]
 }

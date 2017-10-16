@@ -2,35 +2,33 @@
   "name": "react-wikipage-creator",
   "version": "0.1.0",
   "description": "Simple MarkDown wiki files generator for React Components APIs",
-	"main": "index.js",
-	"bin": "cli.js",
+  "main": "index.js",
+  "bin": "cli.js",
   "files": [
     "src",
     "index.js"
   ],
-  "scripts": {
-
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/riccardopiola/react-wikipage-creator.git"
   },
   "keywords": [
-		"react",
-		"wiki",
-		"github wiki",
-		"documentation"
+    "react",
+    "wiki",
+    "github wiki",
+    "documentation"
   ],
   "authors": [
-    "Riccardo Piola <riccardopiola@live.it> (https://github.com/riccardopiola)",
+    "Riccardo Piola <riccardopiola@live.it> (https://github.com/riccardopiola)"
   ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/reactjs/riccardopiola/react-wikipage-creator/issues"
   },
   "dependencies": {
-
+    "fs-extra": "^4.0.2"
   },
   "devDependencies": {},
-  "npmName": "react-wikipage-creator",
+  "npmName": "react-wikipage-creator"
 }

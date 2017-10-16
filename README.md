@@ -4,7 +4,7 @@
 
 ## Config
 
-`wiki-creator.config.json` @root
+Create a file: `wiki-creator.config.json` at the root of your project
 
 - ***modulePath***: `path`
 Path to the API that you want to create a wiki from

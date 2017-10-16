@@ -3,5 +3,6 @@
   "wikiPath": "wiki",
   "customWikiPagesPath": "customWikiPages",
   "wikiURL": "https://github.com/riccardopiola/student-app/wiki",
-  "writeIndexIfNComponents": "3"
+  "writeIndexIfNComponents": "3",
+  "indexName": "Index"
 }

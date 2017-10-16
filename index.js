@@ -1,10 +1,10 @@
 const fse = require('fs-extra');
 
 const write = require('./src/Writer');
-const writeIndex = require('./src/WriteIndex');
+const { writeIndex, writeSideBar } = require('./src/WriteIndex');
 const processFile = require('./src/processFile');
 
-const settings = require(`${process.cwd()}/wiki-creator.config.json`);
+const settings = require(`${process.cwd()}/react-wikipage-creator.config.json`);
 const { modulePath, wikiPath, customWikiPagesPath, useCustomWikiPages } = settings;
 
 const uselessFolders = [
@@ -55,7 +55,10 @@ async function start() {
   const writeIndexPromise = writeIndex(sections, filteredFoldersArray)
     .then(() => console.log('Wrote Index'))
     .catch(e => console.error(e));
-  await Promise.all([ writeIndexPromise ]);
+  const writeSidebarPromise = writeSideBar(sections, filteredFoldersArray)
+    .then(() => console.log('Wrote SideBar'))
+    .catch(e => console.error(e));
+  await Promise.all([ writeIndexPromise, writeSidebarPromise ]);
   console.log('SUCCESSFULLY WROTE THE WIKI!!');
 }
 

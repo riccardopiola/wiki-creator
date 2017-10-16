@@ -1,8 +1,7 @@
 const extractor = require('./Extractor');
 const writer = require('./Writer');
 
-const cwd = process.cwd();
-const settings = require(`${cwd}/wiki-creator.config.json`);
+const settings = require(`${process.cwd()}/react-wikipage-creator.config.json`);
 const { modulePath, wikiPath, customWikiPagesPath } = settings;
 
 async function processFile(folderName, fileNameJS) {
