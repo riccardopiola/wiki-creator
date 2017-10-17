@@ -1,0 +1,16 @@
+{
+  "modulePath": "API",
+  "wikiPath": "wiki/out",
+  "customWikiPagesPath": "wiki",
+  "wikiURL": "https://github.com/riccardopiola/student-app/wiki",
+  "HomePage": {
+    "homePageName": "Index"
+  },
+  "SideBar": {
+    "writeSideBar": true
+  },
+  "topPageIndexes": {
+    "writeIndexIfNComponents": "3"
+  },
+  "exclude": []
+}

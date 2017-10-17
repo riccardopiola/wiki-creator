@@ -8,13 +8,8 @@
       "type": "node",
       "request": "launch",
       "name": "Test",
-      "program": "${workspaceFolder}/tests/test.js"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch",
-      "program": "${workspaceFolder}/cli.js"
+      "program": "${workspaceFolder}/testing/index.js",
+      "cwd": "${workspaceFolder}/testing"
     }
   ]
 }

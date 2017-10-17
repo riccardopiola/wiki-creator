@@ -1,25 +1,36 @@
+// @flow
+
+export type Prop = {
+  propName: string,
+  propType: string,
+  propDesc: string
+} | {
+  section: string
+}
+
+export type ObjectType = {
+  title: string,
+  description: string[],
+  props: Array<{
+    propName: string,
+    propType: string,
+    propDesc: string
+  } | {
+    section: string
+  }>
+}
+
 class ObjectCreator {
-  constructor(folderName, fileName) {
+  object: ObjectType
+  constructor(fileName: string) {
     this.object = {
-      props: [
-        /*
-        {
-          propName: string,
-          propType: string,
-          propDesc: string
-        }
-        */
-      ],
-      // name: string
-      description: [
-        // strings
-      ],
-      folder: folderName,
-      file: fileName
+      props: [],
+      description: [],
+      title: fileName
     };
   }
-  addNewProp(line) {
-    let str = line.split(/:/);
+  addNewProp(line: string) {
+    const str = line.split(/:/);
     const propName = str[0].trim();
     str.splice(0, 1);
     const str2 = str.join(':').split(/\s*\/\/\s*/); // ( // )
@@ -38,14 +49,14 @@ class ObjectCreator {
       propDesc
     });
   }
-  addNewPropSection(line) {
+  addNewPropSection(line: string) {
     const str = line.split(/\s*\/\/\s*/);
     this.object.props.push({ section: str[1].trim() });
   }
-  addComponentName(line) {
-    this.object.name = line.substr(3);
+  addComponentTitle(name: string) {
+    this.object.title = name;
   }
-  addDescriptionLine(line) {
+  addDescriptionLine(line: string) {
     if (line.length <= 3)
       return;
     this.object.description.push(line.substr(3));
