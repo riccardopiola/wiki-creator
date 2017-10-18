@@ -1,4 +1,4 @@
-# Wiki Creator v0.1.0
+# Wiki Creator v2
 
 `$ npm install --save-dev react-wikipage-creator`
 

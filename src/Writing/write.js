@@ -11,7 +11,7 @@ function writeFile(componentsArray: componentObject[], fileName: string): Promis
   return new Promise((resolve) => {
     const outStream = fs.createWriteStream(`${settings.wikiPath}/${fileName}.md`);
     // Decide whether to write the index
-    if (settings.writeIndexIfNComponents) {
+    if (settings.topPageIndexes.writeIndexIfNComponents) {
       if (componentsArray.length >= settings.topPageIndexes.writeIndexIfNComponents)
         outStream.write(composeIndex(componentsArray, fileName));
     }
@@ -46,10 +46,10 @@ function writeIndex(foldersMap: Map<string, Array<fileDataObject>>): Promise<any
 
 function writeSideBar(foldersMap: Map<string, Array<fileDataObject>>): Promise<any> {
   return new Promise((resolve) => {
-    const fileName = '_SideBar';
+    const fileName = '_Sidebar';
     const indexWriter = new IndexWriter(fileName, foldersMap);
     indexWriter.start(() => {
-      console.log(`Wrote ${settings.wikiPath}/_SideBar.md`);
+      console.log(`Wrote ${settings.wikiPath}/_Sidebar.md`);
       resolve();
     });
   });
