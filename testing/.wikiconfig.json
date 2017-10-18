@@ -10,7 +10,10 @@
     "writeSideBar": true
   },
   "topPageIndexes": {
-    "writeIndexIfNComponents": "3"
+    "writeIndexIfNComponents": 3
   },
-  "exclude": []
+  "exclude": [
+    "Components/index.js",
+    "Anatomy/index.js"
+  ]
 }

@@ -7,11 +7,12 @@
   "files": [
     "src",
     "index.js",
+    "cli.js",
     "lib"
   ],
   "scripts": {
-    "build": "flow-remove-types src/ -- -d lib/",
-    "build-test": "flow-remove-types src/ -- -d testing/src/"
+    "build": "flow-remove-types src/ --pretty -d lib/ && cp -R src/Templates/ lib/Templates/",
+    "build-test": "flow-remove-types src/ --pretty -d testing/src/ && cp -R src/Templates/ testing/src/Templates/"
   },
   "repository": {
     "type": "git",

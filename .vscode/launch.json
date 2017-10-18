@@ -8,7 +8,10 @@
       "type": "node",
       "request": "launch",
       "name": "Test",
-      "program": "${workspaceFolder}/testing/index.js",
+      "runtimeExecutable": "flow-node",
+      "runtimeArgs": [
+        "${workspaceFolder}/testing/index.dev.js"
+      ],
       "cwd": "${workspaceFolder}/testing"
     }
   ]

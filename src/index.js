@@ -15,7 +15,7 @@ async function start() {
   const foldersMap: Map<string, string[]> = await searchAPI(); // Map<folderName, [...files]
   // 2. EXTRACT THE DATA FROM EACH FILE
   const extractedFoldersMap: Map<string, Array<fileDataObject>> = new Map();
-  const extractedPromises: Array<Promise<any>> = [];
+  const promises: Array<Promise<any>> = [];
   // Loop over the folders
   foldersMap.forEach(async (files: string[], folder: string) => {
     // Loop over the single files and collect the "extract" Promises
@@ -24,30 +24,31 @@ async function start() {
     });
     // Create a big promise from the single file promises and push it into the main
     // extractedPromises, also push the filesArray of a folder, once resolved, to the map
-    extractedPromises.push(Promise.all(filesPromiseArr)
+    promises.push(Promise.all(filesPromiseArr)
       .then((filesArr: Array<fileDataObject>) => {
         extractedFoldersMap.set(folder, filesArr);
       })
     ); // eslint-disable-line
   });
   // Wait for all the extractions to happen
-  await Promise.all(extractedPromises);
+  await Promise.all(promises);
   // 3. WRITE THE DOCS
   extractedFoldersMap.forEach((fileDataArr: Array<fileDataObject>, folder: string) => {
     // Write each single file
     fileDataArr.forEach(fileObj => {
-      writeFile(fileObj.componentsArray, fileObj.file);
+      promises.push(writeFile(fileObj.componentsArray, fileObj.file));
     });
     // Write "folder" files
     const folderComponents = fileDataArr.reduce((arr: componentObject[], o: fileDataObject) => {
       o.componentsArray.forEach((comp: componentObject) => arr.push(comp));
       return arr;
     }, []);
-    writeFile(folderComponents, folder);
+    promises.push(writeFile(folderComponents, folder));
   });
   // Write Index and Sidebar
-  writeIndex(extractedFoldersMap);
-  writeSideBar(extractedFoldersMap);
+  promises.push(writeIndex(extractedFoldersMap));
+  promises.push(writeSideBar(extractedFoldersMap));
+  return Promise.all(promises);
 }
 
 module.exports = start;

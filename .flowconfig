@@ -3,6 +3,7 @@
 <PROJECT_ROOT>/lib/*
 <PROJECT_ROOT>/git/.*
 <PROJECT_ROOT>/example/*
+<PROJECT_ROOT>/testing/*
 
 [include]
 /node_modules/npm/*.js

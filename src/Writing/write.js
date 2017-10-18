@@ -12,7 +12,7 @@ function writeFile(componentsArray: componentObject[], fileName: string): Promis
     const outStream = fs.createWriteStream(`${settings.wikiPath}/${fileName}.md`);
     // Decide whether to write the index
     if (settings.writeIndexIfNComponents) {
-      if (componentsArray.length >= settings.writeIndexIfNComponents)
+      if (componentsArray.length >= settings.topPageIndexes.writeIndexIfNComponents)
         outStream.write(composeIndex(componentsArray, fileName));
     }
     componentsArray.forEach((component: componentObject, i: number) => {
@@ -33,16 +33,26 @@ type fileDataObject = {
   componentsArray: componentObject[]
 }
 
-function writeIndex(foldersMap: Map<string, Array<fileDataObject>>) {
-  const fileName = settings.HomePage.homePageName;
-  const indexWriter = new IndexWriter(fileName, foldersMap);
-  indexWriter.start();
+function writeIndex(foldersMap: Map<string, Array<fileDataObject>>): Promise<any> {
+  return new Promise((resolve) => {
+    const fileName = settings.HomePage.homePageName;
+    const indexWriter = new IndexWriter(fileName, foldersMap);
+    indexWriter.start(() => {
+      console.log(`Wrote ${settings.wikiPath}/${settings.HomePage.homePageName}.md`);
+      resolve();
+    });
+  });
 }
 
-function writeSideBar(foldersMap: Map<string, Array<fileDataObject>>) {
-  const fileName = '_SideBar';
-  const indexWriter = new IndexWriter(fileName, foldersMap);
-  indexWriter.start();
+function writeSideBar(foldersMap: Map<string, Array<fileDataObject>>): Promise<any> {
+  return new Promise((resolve) => {
+    const fileName = '_SideBar';
+    const indexWriter = new IndexWriter(fileName, foldersMap);
+    indexWriter.start(() => {
+      console.log(`Wrote ${settings.wikiPath}/_SideBar.md`);
+      resolve();
+    });
+  });
 }
 
 function composeIndex(componentsArray: componentObject[], file: string): string {
