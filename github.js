@@ -1,4 +1,5 @@
 const child_process = require('child_process');
+const settings = require('./lib/getSettings').getSettings();
 
 async function upload() {
   await commandExecutor('git add .');
@@ -9,11 +10,14 @@ async function upload() {
 
 function commandExecutor(command) {
   return new Promise((resolve) => {
-    child_process.exec(command, (error, stdout, stderr) => {
+    const options = {
+      cwd: `${process.cwd()}/${settings.wikiPath}`
+    };
+    child_process.exec(command, options, (error, stdout, stderr) => {
       if (error)
-        console.error(error);
+        throw error;
       else if (stderr)
-        console.error(stderr);
+        throw stderr;
       else {
         if (stdout)
           console.log(stdout);

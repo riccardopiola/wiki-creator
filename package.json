@@ -2,11 +2,11 @@
   "name": "react-wikipage-creator",
   "version": "1.0.0",
   "description": "Simple MarkDown wiki files generator for React Components APIs",
-  "main": "index.js",
-  "bin": "index.js",
+  "main": "cli.js",
+  "bin": "cli.js",
   "files": [
     "src",
-    "index.js",
+    "github.js",
     "cli.js",
     "lib"
   ],
