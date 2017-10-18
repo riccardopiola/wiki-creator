@@ -1,11 +1,13 @@
 const child_process = require('child_process');
 
 async function upload() {
-  await processSpawner('git add .');
-  
+  await commandExecutor('git add .');
+  await commandExecutor('git commit --quiet --allow-empty-message');
+  await commandExecutor('git push');
+  return console.log('Successfully updated gihub wiki repo');
 }
 
-function processSpawner(command) {
+function commandExecutor(command) {
   return new Promise((resolve) => {
     child_process.exec(command, (error, stdout, stderr) => {
       if (error)

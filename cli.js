@@ -5,9 +5,8 @@ const start = require('./lib/index.js');
 const upload = require('./github');
 
 start().then(() => {
-  const args = process.argv.slice(1, process.argv.length - 1);
-  args.forEach((arg) => {
+  process.argv.forEach(async (arg) => {
     if (arg === '--upload')
-      upload();
+      await upload();
   });
 });
